@@ -21,9 +21,10 @@
  *
  */
 
-require_once('library/Tr8n.php');
+require_once('vendor/tr8n_php_clientsdk/library/Tr8n.php');
 
-tr8n_init_client_sdk();
+//tr8n_init_client_sdk("http://sandbox.tr8nhub.com", "0c1eb03d6c6e12cb2", "5ff3d87a83c13fcdb");
+tr8n_init_client_sdk('http://sandbox.tr8nhub.com', 'df8a6877f0918aeb5', '5c07f42936f816eda');
 
 wp_enqueue_script('tr8n', \Tr8n\Config::instance()->application->host . '/tr8n/api/proxy/boot.js?debug=true');
 
