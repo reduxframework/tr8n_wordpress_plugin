@@ -49,6 +49,7 @@ function tmlLabel($atts, $content = null) {
 }
 
 
-
-
-
+function tr8n_title($title, $id) {
+    return do_shortcode($title);
+}
+add_filter('the_title', 'tr8n_title', 10, 2);
