@@ -40,16 +40,38 @@ function tr8n_translate($atts, $content = null) {
         $tokens = json_decode($atts['tokens'], true);
     }
 
-    if (isset($atts['split'])) {
-        $options['split'] = $atts['split'];
+    if (isset($atts['options'])) {
+        $options = json_decode($atts['options'], true);
     }
 
     foreach($atts as $key => $value) {
-        $parts = explode('_', $key);
-        if ($parts[0] == 'token' && count($parts) > 1) {
-            $tokens[$parts[1]] = array();
-            \Tr8n\Utils\ArrayUtils::createAttribute($tokens[$parts[1]], array_slice($parts,2), $value);
+        if (\Tr8n\Utils\StringUtils::startsWith('token:', $value)) {
+            $parts = explode('=', substr($value, 6));
+            $value = trim($parts[1], '\'"');
+
+            $parts = explode('.', $parts[0]);
+            if (count($parts) == 1) {
+                $tokens[$parts[0]] = $value;
+            } else {
+                if (!isset($tokens[$parts[0]])) $tokens[$parts[0]] = array();
+                \Tr8n\Utils\ArrayUtils::createAttribute($tokens[$parts[0]], array_slice($parts,1), $value);
+            }
+        } else if (\Tr8n\Utils\StringUtils::startsWith('option:', $value)) {
+            $parts = explode('=', substr($value, 7));
+            $value = trim($parts[1], '\'"');
+
+            $parts = explode('.', $parts[0]);
+            if (count($parts) == 1) {
+                $tokens[$parts[0]] = $value;
+            } else {
+                if (!isset($options[$parts[0]])) $tokens[$parts[0]] = array();
+                \Tr8n\Utils\ArrayUtils::createAttribute($options[$parts[0]], array_slice($parts,1), $value);
+            }
         }
+    }
+
+    if (isset($atts['split'])) {
+        $options['split'] = $atts['split'];
     }
 
 //    \Tr8n\Logger::instance()->info("translating: \"" . $content . "\"", $tokens);

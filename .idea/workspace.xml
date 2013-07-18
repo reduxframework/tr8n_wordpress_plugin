@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db0a565a-d848-420c-aed2-f1a22d52bae9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/test/Tr8n/Utils/StringUtilsTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/tr8n_wordpress_plugin.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Utils/ArrayUtils.php" afterPath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Utils/ArrayUtils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Language.php" afterPath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Language.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Rules/NumericRule.php" afterPath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Rules/NumericRule.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Utils/StringUtils.php" afterPath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Utils/StringUtils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n.php" afterPath="$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tr8n.php" afterPath="$PROJECT_DIR$/tr8n.php" />
     </list>
     <ignored path="tr8n_wordpress_plugin.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="db0a565a-d848-420c-aed2-f1a22d52bae9" time="1374106362886" ignored="false" />
-    <file path="/tr8n.php" changelist="db0a565a-d848-420c-aed2-f1a22d52bae9" time="1374109687183" ignored="false" />
+    <file path="/tr8n.php" changelist="db0a565a-d848-420c-aed2-f1a22d52bae9" time="1374113682317" ignored="false" />
     <file path="/Tr8n.php" changelist="db0a565a-d848-420c-aed2-f1a22d52bae9" time="1374103535662" ignored="false" />
     <file path="/StringUtils.php" changelist="db0a565a-d848-420c-aed2-f1a22d52bae9" time="1374106641714" ignored="false" />
     <file path="/StringUtilsTest.php" changelist="db0a565a-d848-420c-aed2-f1a22d52bae9" time="1374102406363" ignored="false" />
@@ -50,7 +38,7 @@
       <file leaf-file-name="tr8n.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tr8n.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="5" selection-start="1547" selection-end="1547" vertical-scroll-proportion="0.6238245">
+            <state line="77" column="0" selection-start="2539" selection-end="2539" vertical-scroll-proportion="0.6865204">
               <folding>
                 <element signature="e#6#280#0" expanded="true" />
               </folding>
@@ -83,15 +71,6 @@
               <folding>
                 <element signature="e#7#10#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ValueRule.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Rules/ValueRule.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="83" selection-start="1848" selection-end="1907" vertical-scroll-proportion="-18.75">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -587,13 +566,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/tr8n_php_clientsdk/library/Tr8n/Tokens/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="48" selection-start="13484" selection-end="13484" vertical-scroll-proportion="-203.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/tr8n_php_clientsdk/test/Tr8n/Utils/StringUtilsTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="1" selection-start="1421" selection-end="1421" vertical-scroll-proportion="-24.375">
@@ -696,9 +668,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="817" column="9" selection-start="24293" selection-end="24293" vertical-scroll-proportion="0.34169278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tr8n.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="5" selection-start="1547" selection-end="1547" vertical-scroll-proportion="0.6238245">
+        <state line="77" column="0" selection-start="2539" selection-end="2539" vertical-scroll-proportion="0.6865204">
           <folding>
             <element signature="e#6#280#0" expanded="true" />
           </folding>
