@@ -101,7 +101,7 @@ function tr8n_translate($atts, $content = null) {
         return $content;
     }
 }
-add_shortcode('tr', 'tr8n_translate', 2);
+add_shortcode('tr8n:tr', 'tr8n_translate', 2);
 
 function tr8n_block($atts, $content = null) {
     if (\Tr8n\Config::instance()->isDisabled()) {
