@@ -149,7 +149,7 @@ function tr8n_enqueue_style() {
         return;
     }
 
-    wp_enqueue_script('tr8n', \Tr8n\Config::instance()->application->host . '/tr8n/api/proxy/boot.js?debug=true');
+    wp_enqueue_script('tr8n', \Tr8n\Config::instance()->application->jsBootUrl());
 }
 add_action('wp_enqueue_scripts', 'tr8n_enqueue_style');
 add_action('admin_init', 'tr8n_enqueue_style');
