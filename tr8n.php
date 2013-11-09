@@ -40,19 +40,13 @@ if (\Tr8n\Config::instance()->isEnabled()) {
 //}
 //\Tr8n\Config::init(new Tr8nWordpressConfig());
 
-function tr8n_translate($atts, $content = null) {
-    if (\Tr8n\Config::instance()->isDisabled()) {
-        return $content;
-    }
-
-    if ($content == null) return $content;
-
-    $label = trim($content);
-    $description = isset($atts['context']) ? $atts['context'] : null;
+function tr8n_prepare_tokens_and_options($atts) {
     $tokens = array();
     $options = array();
 
     if (is_string($atts)) $atts = array();
+
+    $description = isset($atts['context']) ? $atts['context'] : null;
 
     if (isset($atts['tokens'])) {
         $tokens = json_decode($atts['tokens'], true);
@@ -92,16 +86,37 @@ function tr8n_translate($atts, $content = null) {
         $options['split'] = $atts['split'];
     }
 
+    return array("description" => $description, "tokens" => $tokens, "options" => $options);
+}
+
+function tr8n_translate($atts, $content = null) {
+    if (\Tr8n\Config::instance()->isDisabled()) {
+        return $content;
+    }
+
+    if ($content == null) return $content;
+
+    $label = trim($content);
+    $atts = tr8n_prepare_tokens_and_options($atts);
+
 //    \Tr8n\Logger::instance()->info("translating: \"" . $content . "\"", $tokens);
 
     try {
-        return tr($label, $description, $tokens, $options);
+        return tr($label, $atts["description"], $atts["tokens"], $atts["options"]);
     } catch(\Tr8n\Tr8nException $e) {
         \Tr8n\Logger::instance()->info($e->getMessage());
         return $content;
     }
 }
 add_shortcode('tr8n:tr', 'tr8n_translate', 2);
+
+function tr8n_translate_html($attrs, $content = null) {
+    $attrs = tr8n_prepare_tokens_and_options($attrs);
+
+//    \Tr8n\Logger::instance()->debug($content);
+    return trh($content, $attrs["description"], $attrs["tokens"], $attrs["options"]);
+}
+add_shortcode('tr8n:trh', 'tr8n_translate_html', 2);
 
 function tr8n_block($atts, $content = null) {
     if (\Tr8n\Config::instance()->isDisabled()) {
@@ -123,10 +138,35 @@ function tr8n_block($atts, $content = null) {
 add_shortcode('tr8n:block', 'tr8n_block', 2);
 
 function tr8n_title($title, $id) {
-    return do_shortcode($title);
+    if (get_option('tr8n_translate_html') == 'true') {
+        return do_shortcode($title);
+    }
+    if ($title != strip_tags($title)) {
+        return trh($title);
+    }
+    return tr($title);
 }
 add_filter('the_title', 'tr8n_title', 10, 2);
 add_filter('wp_title', 'tr8n_title', 10, 2);
+
+function tr8n_the_content_filter($content) {
+    if (get_option('tr8n_translate_html') == 'true') {
+        return $content;
+    }
+//    \Tr8n\Logger::instance()->debug($content);
+    return trh($content);
+}
+add_filter( 'the_content', 'tr8n_the_content_filter' );
+
+
+function tr8n_comment_text_filter($content) {
+    if (get_option('tr8n_translate_html') == 'true') {
+        return $content;
+    }
+//    \Tr8n\Logger::instance()->debug($content);
+    return trh($content);
+}
+add_filter( 'comment_text ', 'tr8n_comment_text_filter' );
 
 
 function tr8n_request_shutdown() {
@@ -238,7 +278,8 @@ add_action('widgets_init', 'tr8n_register_widgets');
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
  */
 function tr8n_translate_field_names( $translated_text, $text, $domain ) {
-    if (get_option('tr8n_translate_wordpress')) {
+//    return trh($text, null, array(), array("source" => "wordpress"));
+    if (get_option('tr8n_translate_wordpress') == 'true') {
         foreach(array('%s', 'http://', '%1', '%2', '%3', '%4', '&#', '%d', '&gt;') as $token) {
             if (strpos($text, $token) !== FALSE) return $translated_text;
         }

@@ -49,15 +49,16 @@ class LanguageSelectorWidget extends WP_Widget {
         extract($args, EXTR_SKIP);
 //        echo $before_widget; // pre-widget code from theme
 
-        $langs = "";
+        $langs = "<ul>";
         foreach(\Tr8n\Config::instance()->application->languages as $language) {
             $bold = (\Tr8n\Config::instance()->current_language->locale == $language->locale);
-            $langs .= "<div style='font-size:12px;padding-top:3px;" . ($bold ? 'font-weight:bold' : '') . "'>";
+            $langs .= "<li>";
             $langs .= "<a href='#' onClick='Tr8n.UI.LanguageSelector.change(\"" . $language->locale . "\");'>";
-            $langs .= "<img src='" . \Tr8n\Config::instance()->application->host . '/assets/tr8n/flags/' . $language->locale . '.png' . "' style='margin-right:3px;'>";
+            $langs .= "<img src='" . $language->flagUrl() . "' style='margin-right:3px;'>";
             $langs .= $language->name;
-            $langs .= "</a></div>";
+            $langs .= "</a></li>";
         }
+        $langs .= "</ul>";
 
         $translator_options = "";
         if (\Tr8n\Config::instance()->current_translator) {
@@ -67,12 +68,14 @@ class LanguageSelectorWidget extends WP_Widget {
         }
 
         print <<<EOM
-        <div class="page-title widget-title">Languages <span style='font-size:7px;color:#21759b;cursor:pointer;' onClick='Tr8n.UI.LanguageSelector.show(true);'>open</span></div>
+        <aside id="meta-2" class="widget widget_meta masonry-brick" style="position: absolute; top: 128px; left: 265px;">
+        <div>Languages <span style='font-size:10px;color:#21759b;cursor:pointer;' onClick='Tr8n.UI.LanguageSelector.show(true);'>open</span></div>
         <div style="border:0px solid #ccc; margin-bottom:15px;">
             $langs
 
             $translator_options
         </div>
+        </aside>
 EOM;
 //        echo $after_widget; // post-widget code from theme
     }
