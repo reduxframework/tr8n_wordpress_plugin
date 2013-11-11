@@ -1,8 +1,11 @@
 Tr8n Plugin For Wordpress
 =====================
 
-This plugins allows inline translating a Wordpress blog site using Tr8n PHP SDK and managing translations using Tr8n Service.
+This plugin uses Tr8n PHP Client SDK to enable inline translations of Wordpress post and page content.
 
+To learn about how to configure and use the plugin, please read the following documentation:
+
+http://wiki.tr8nhub.com/index.php?title=Tr8n_WordPress_Plugin
 
 
 
