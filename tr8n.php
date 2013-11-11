@@ -154,6 +154,8 @@ add_filter('wp_title', 'tr8n_title', 10, 2);
 
 function tr8n_the_content_filter($content) {
     if (get_option('tr8n_translate_html') == 'true') {
+        if (strstr($content, 'tr8n:manual') !== false)
+            return $content;
         return trh($content);
     }
 //    \Tr8n\Logger::instance()->debug($content);
