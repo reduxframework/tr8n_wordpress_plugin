@@ -68,7 +68,7 @@ class LanguageSelectorWidget extends WP_Widget {
         }
 
         print <<<EOM
-        <aside id="meta-2" class="widget widget_meta masonry-brick" style="position: absolute; top: 128px; left: 265px;">
+        <aside id="meta-2" class="widget widget_meta masonry-brick" style="">
         <div>Languages <span style='font-size:10px;color:#21759b;cursor:pointer;' onClick='Tr8n.UI.LanguageSelector.show(true);'>open</span></div>
         <div style="border:0px solid #ccc; margin-bottom:15px;">
             $langs

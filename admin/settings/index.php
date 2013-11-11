@@ -14,7 +14,7 @@ $application_fields = array(
 );
 
 $translation_fields = array(
-    'tr8n_translate_html' => array("title" => __('Automatic Translations:'), "value" => get_option('tr8n_translate_managed'), "type" => "checkbox", "notes" => __('If enabled, the content will be automatically converted to TML and translated. Otherwise you should use tr8n:tr, tr8n:trh and tr8n:block tags to indicate translation keys and source blocks.')),
+    'tr8n_translate_html' => array("title" => __('Automatic Translations:'), "value" => get_option('tr8n_translate_html'), "type" => "checkbox", "notes" => __('If enabled, the content will be automatically converted to TML and translated. Otherwise you should use tr8n:tr, tr8n:trh and tr8n:block tags to indicate translation keys and source blocks.')),
     'tr8n_translate_wordpress' => array("title" => __('Translate Wordpress:'), "value" => get_option('tr8n_translate_wordpress'), "type" => "checkbox", "notes" => __('(Beta) If enabled, the Wordpress text itself will be registered as TML and translated using Tr8n.')),
 );
 
@@ -24,17 +24,15 @@ if (isset($_POST[ $submit_field_name ]) && $_POST[ $submit_field_name ] == 'Y') 
         $application_fields[$key] = array_merge($attributes, array("value" => $_POST[$key]));
     }
     foreach($translation_fields as $key => $attributes) {
-        $value = isset($_POST[ $key ]) ? "true" : null;
+        $value = isset($_POST[ $key ]) ? "true" : "false";
         update_option( $key, $value);
         $translation_fields[$key] = array_merge($attributes, array("value" => $value));
     }
     ?>
     <div class="updated"><p><strong><?php _e('Settings have been saved.'); ?></strong></p></div>
 <?php } else if (isset($_POST[ $cache_field_name ]) && $_POST[ $cache_field_name ] == 'Y') {
-
-
+    \Tr8n\Config::instance()->incrementCache();
 ?>
-
     <div class="updated"><p><strong><?php _e('Cache has been updated.'); ?></strong></p></div>
 <?php
 }

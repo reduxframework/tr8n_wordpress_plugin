@@ -40,23 +40,26 @@ if (\Tr8n\Config::instance()->isEnabled()) {
 //}
 //\Tr8n\Config::init(new Tr8nWordpressConfig());
 
-function tr8n_prepare_tokens_and_options($atts) {
+function tr8n_prepare_tokens_and_options($args) {
     $tokens = array();
     $options = array();
 
-    if (is_string($atts)) $atts = array();
+    if (is_string($args)) $args = array();
 
-    $description = isset($atts['context']) ? $atts['context'] : null;
-
-    if (isset($atts['tokens'])) {
-        $tokens = json_decode($atts['tokens'], true);
+    $description = isset($args['description']) ? $args['description'] : null;
+    if ($description == null) {
+        $description = isset($args['context']) ? $args['context'] : null;
     }
 
-    if (isset($atts['options'])) {
-        $options = json_decode($atts['options'], true);
+    if (isset($args['tokens'])) {
+        $tokens = json_decode($args['tokens'], true);
     }
 
-    foreach(array_values($atts) as $value) {
+    if (isset($args['options'])) {
+        $options = json_decode($args['options'], true);
+    }
+
+    foreach(array_values($args) as $value) {
         if (\Tr8n\Utils\StringUtils::startsWith('token:', $value)) {
             $parts = explode('=', substr($value, 6));
             $value = trim($parts[1], '\'"');
@@ -82,8 +85,8 @@ function tr8n_prepare_tokens_and_options($atts) {
         }
     }
 
-    if (isset($atts['split'])) {
-        $options['split'] = $atts['split'];
+    if (isset($args['split'])) {
+        $options['split'] = $args['split'];
     }
 
     return array("description" => $description, "tokens" => $tokens, "options" => $options);
@@ -139,38 +142,44 @@ add_shortcode('tr8n:block', 'tr8n_block', 2);
 
 function tr8n_title($title, $id) {
     if (get_option('tr8n_translate_html') == 'true') {
-        return do_shortcode($title);
+        if ($title != strip_tags($title)) {
+            return trh($title);
+        }
+        return tr($title);
     }
-    if ($title != strip_tags($title)) {
-        return trh($title);
-    }
-    return tr($title);
+    return do_shortcode($title);
 }
 add_filter('the_title', 'tr8n_title', 10, 2);
 add_filter('wp_title', 'tr8n_title', 10, 2);
 
 function tr8n_the_content_filter($content) {
     if (get_option('tr8n_translate_html') == 'true') {
-        return $content;
+        return trh($content);
     }
 //    \Tr8n\Logger::instance()->debug($content);
-    return trh($content);
+    return $content;
 }
-add_filter( 'the_content', 'tr8n_the_content_filter' );
+add_filter('the_content', 'tr8n_the_content_filter');
 
+function tr8n_the_excerpt_filter($content) {
+//    \Tr8n\Logger::instance()->debug($content);
+    return $content;
+}
+add_filter('the_excerpt', 'tr8n_the_excerpt_filter');
 
 function tr8n_comment_text_filter($content) {
     if (get_option('tr8n_translate_html') == 'true') {
-        return $content;
+        return trh($content);
     }
 //    \Tr8n\Logger::instance()->debug($content);
-    return trh($content);
+    return $content;
 }
-add_filter( 'comment_text ', 'tr8n_comment_text_filter' );
+add_filter('comment_text ', 'tr8n_comment_text_filter');
 
 
 function tr8n_request_shutdown() {
-    \Tr8n\Config::instance()->application->submitMissingKeys();
+    tr8n_complete_request();
+//    \Tr8n\Config::instance()->application->submitMissingKeys();
 }
 add_action('shutdown', 'tr8n_request_shutdown');
 
