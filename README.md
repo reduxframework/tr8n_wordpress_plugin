@@ -67,9 +67,16 @@ After you save the changes, you can add a language selector widget to your WordP
 
 The Tr8n Language Selector allows users to change languages of WordPress and your posts.
 
+Now you are ready to invite translators and translate your blogs. By enabling inline translations, you can translate entire paragraphs inline:
+
+<img src="http://wiki.tr8nhub.com/images/thumb/f/f8/WordPressBlog_In_Translation.png/800px-WordPressBlog_In_Translation.png">
+
+Once the inline translations are disabled, your site will contibue to remain translated:
+
+<img src="http://wiki.tr8nhub.com/images/thumb/2/2a/WordPress_Translated_Blog.png/800px-WordPress_Translated_Blog.png">
 
 
-To learn about how to configure and use the plugin, please read the following documentation:
+To learn more about how to configure and use the plugin, please read the following documentation:
 
 http://wiki.tr8nhub.com/index.php?title=Tr8n_WordPress_Plugin
 
