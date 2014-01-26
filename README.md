@@ -34,8 +34,34 @@ Now install Tr8n WordPress plugin by executing the following command:
         $ php composer.phar install
 
 
+The installation will put the Tr8n WordPress plugin inside the wp-content/plugins/tr8n-wordpress-plugin folder.
+At the same time, all other dependencies and libraries will be placed in the vendor folder and the WordPress plugin will refer to them through relative path.
 
 
+Integration
+==================
+
+Now we can active the plugin by logging into to WordPress with an admin account and navigate to the Plugins section.
+
+You should now see the Tr8n plugin as one of the options.
+
+
+Click on the "Activate" link. You should see now a new section on the left bar called "Tr8n".
+
+
+Before proceeding further, please visit http://tr8nhub.com, register as a new user and create a new application.
+
+Once you have created a new application, go to the security tab in the application administration section and copy your application key and secret.
+
+<img src="http://wiki.tr8nhub.com/images/thumb/f/f7/Application_Settings.png/800px-Application_Settings.png">
+
+
+Now you can go back to your WordPress and provide your application details in the Tr8n configuration section.
+
+
+After you save the changes, you can add a language selector widget to your WordPess UI by visiting the Appearance > Widgets section.
+
+The Tr8n Language Selector allows users to change languages of WordPress and your posts.
 
 
 
