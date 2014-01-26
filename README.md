@@ -45,9 +45,11 @@ Now we can active the plugin by logging into to WordPress with an admin account 
 
 You should now see the Tr8n plugin as one of the options.
 
+<img src="http://wiki.tr8nhub.com/images/thumb/f/f9/WordPress_Tr8n_Activation.png/800px-WordPress_Tr8n_Activation.png">
 
 Click on the "Activate" link. You should see now a new section on the left bar called "Tr8n".
 
+<img src="http://wiki.tr8nhub.com/images/thumb/f/f3/WordPress_Tr8n_Settings.png/799px-WordPress_Tr8n_Settings.png">
 
 Before proceeding further, please visit http://tr8nhub.com, register as a new user and create a new application.
 
@@ -60,6 +62,8 @@ Now you can go back to your WordPress and provide your application details in th
 
 
 After you save the changes, you can add a language selector widget to your WordPess UI by visiting the Appearance > Widgets section.
+
+<img src="http://wiki.tr8nhub.com/images/thumb/0/0e/Wordpress_Language_Selector_Widget.png/419px-Wordpress_Language_Selector_Widget.png">
 
 The Tr8n Language Selector allows users to change languages of WordPress and your posts.
 
