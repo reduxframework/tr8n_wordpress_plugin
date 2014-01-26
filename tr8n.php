@@ -3,7 +3,7 @@
   Plugin Name: Tr8n
   Plugin URI: http://tr8nhub.com/
   Description: Crowdsourced translation service
-  Author: Tr8nHub
+  Author: Michael Berkovich, Tr8nHub.com
   Version: 0.1.0
   Author URI: http://tr8nhub.com/
   License: GPL (http://www.gnu.org/licenses/gpl.txt)
@@ -15,8 +15,8 @@
  * Tr8n v0.1.0
  * http://tr8nhub.com/
  *
- * Copyright 2010-2013, Michael Berkovich, Tr8nHub
- * Licensed under the GPL Version 2 or higher.
+ * Copyright 2014, Michael Berkovich, Tr8nHub
+ * Licensed under the MIT.
  * http://tr8nhub.com/license
  *
  */
