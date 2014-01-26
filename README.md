@@ -21,6 +21,7 @@ Create composer.json in the root folder of your application, and add the followi
         {
             "minimum-stability": "dev",
             "require": {
+                "composer/installers": "v1.0.6",
                 "tr8n/tr8n-wordpress-plugin": "dev-master"
             }
         }
