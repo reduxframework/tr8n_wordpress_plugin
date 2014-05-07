@@ -20,7 +20,7 @@
  * http://tr8nhub.com/license
  *
  */
-return;
+
 add_option('tr8n_version', '0.1.0');
 
 require_once( dirname( __FILE__ ) . '/sdk/library/Tr8n.php' );
