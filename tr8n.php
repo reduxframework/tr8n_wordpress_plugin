@@ -20,10 +20,10 @@
  * http://tr8nhub.com/license
  *
  */
-
+return;
 add_option('tr8n_version', '0.1.0');
 
-require_once('../../../vendor/tr8n/tr8n-client-sdk/library/Tr8n.php');
+require_once( dirname( __FILE__ ) . '/sdk/library/Tr8n.php' );
 
 tr8n_init_client_sdk(get_option('tr8n_server_url'), get_option('tr8n_application_key'), get_option('tr8n_application_secret'));
 
